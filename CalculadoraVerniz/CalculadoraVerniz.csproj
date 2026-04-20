@@ -13,4 +13,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CalculadoraVerniz.API\CalculadoraVerniz.API.csproj" />
+  </ItemGroup>
+
 </Project>
