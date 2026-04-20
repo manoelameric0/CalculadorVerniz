@@ -4,11 +4,11 @@ namespace CalculadoraVerniz.Models;
 
 public class Medida
 {
-    public int Largura {get; private set;}
-    public int Altura {get; private set;}
-    public int Area {get; private set;}
+    public decimal Largura {get; private set;}
+    public decimal Altura {get; private set;}
+    public decimal Area {get; private set;}
 
-    public Medida(int  largura, int altura)
+    public Medida(decimal  largura, decimal altura)
     {
         if (largura <= 0)  throw new ArgumentException("Largura deve ser maior que ZERO!!!");
 
@@ -19,8 +19,8 @@ public class Medida
         CalcularArea(largura, altura);
     }
 
-    public void CalcularArea(int largura, int altura)
+    public void CalcularArea(decimal largura, decimal altura)
     {
-        Area = (largura * altura) /10000;
+        Area = (largura * altura) /10000m;
     }
 }

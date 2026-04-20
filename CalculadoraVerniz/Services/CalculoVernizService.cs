@@ -15,14 +15,14 @@ public class CalculoVernizService
 
     public ResultadoCalculo CalcularTotais(List<Medida> medidas)
     {
-        int areaTotal = 0;
+        decimal areaTotal = 0;
         foreach (var medida in medidas)
         {
             areaTotal += medida.Area;
         }
-        int mlTotal = areaTotal * 80;
-        int verniz = mlTotal * 5/6;
-        int catalizador = mlTotal * 1/6;
+        decimal mlTotal = areaTotal * 80;
+        decimal verniz = mlTotal * 5/6;
+        decimal catalizador = mlTotal * 1/6;
 
         medidas.Clear();
 

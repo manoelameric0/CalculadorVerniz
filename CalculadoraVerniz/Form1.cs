@@ -110,8 +110,19 @@ namespace CalculadoraVerniz
         {
             try
             {
-                int largura = int.Parse(txtLargura.Text);
-                int altura = int.Parse(txtAltura.Text);
+                string larguraInput = txtLargura.Text;
+                if (!decimal.TryParse(larguraInput, out decimal largura))
+                {
+                    MessageBox.Show("Largura inválida. Por favor, insira um número válido.");
+                    return;
+                }
+
+                string alturaInput = txtAltura.Text;
+                if (!decimal.TryParse(alturaInput, out decimal altura))
+                {
+                    MessageBox.Show("Altura inválida. Por favor, insira um número válido.");
+                    return;
+                }
 
                 var medida = new Medida(largura, altura);
                 medidas.Add(medida);
@@ -120,6 +131,8 @@ namespace CalculadoraVerniz
 
                 txtLargura.Clear();
                 txtAltura.Clear();
+
+                lblResultado.Text = "";
             }
             catch (Exception ex)
             {
@@ -131,7 +144,7 @@ namespace CalculadoraVerniz
         {
             lstMedidas.Items.Clear();
 
-            int areaTotal = 0;
+            decimal areaTotal = 0;
 
             foreach (var m in medidas)
             {
@@ -157,10 +170,10 @@ namespace CalculadoraVerniz
             lblAreaTotal.Text = "";
 
             lblResultado.Text =
-                $"Área Total: {resultado.AreaTotal} m²\n" +
-                $"ML Total: {resultado.MlTotal} ml\n" +
-                $"Verniz: {resultado.Verniz} ml\n" +
-                $"Catalizador: {resultado.Catalizador} ml";
+                $"Área Total: {resultado.AreaTotal:f2} m²\n" +
+                $"ML Total: {resultado.MlTotal:f2} ml\n" +
+                $"Verniz: {resultado.Verniz:f2} ml\n" +
+                $"Catalizador: {resultado.Catalizador:f2} ml";
         }
     }
 }

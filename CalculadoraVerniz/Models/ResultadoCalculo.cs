@@ -4,12 +4,12 @@ namespace CalculadoraVerniz.Models;
 
 public class ResultadoCalculo
 {
-    public int AreaTotal {get; private set;}
-    public int MlTotal {get; private set;}
-    public int Verniz {get; private set;}
-    public int Catalizador {get; private set;}
+    public decimal AreaTotal {get; private set;}
+    public decimal MlTotal {get; private set;}
+    public decimal Verniz {get; private set;}
+    public decimal Catalizador {get; private set;}
 
-    public ResultadoCalculo(int areaTotal, int mlTotal, int verniz, int catalizador)
+    public ResultadoCalculo(decimal areaTotal, decimal mlTotal, decimal verniz, decimal catalizador)
     {
         AreaTotal = areaTotal;
         MlTotal = mlTotal;
