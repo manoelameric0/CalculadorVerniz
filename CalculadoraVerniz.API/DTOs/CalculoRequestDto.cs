@@ -4,6 +4,6 @@ namespace CalculadoraVerniz.API.DTOs
 {
     public class CalculoRequestDto
     {
-       List<MedidaRequestDto> Medidas { get; set; }
+       public List<MedidaRequestDto> Medidas { get; set; }
     }
 }
