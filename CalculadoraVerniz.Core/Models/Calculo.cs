@@ -12,7 +12,7 @@ namespace CalculadoraVerniz.Core.Models
 
         public async Task Limpar() => _medidas.Clear();
 
-        public async Task Adicionar(decimal largura, decimal altura) => _medidas.Add(new Medida(largura, altura));
+        public async Task Adicionar(Medida medida) => _medidas.Add(medida);
 
         public async Task<bool> TemMedidas() => _medidas.Any();
 

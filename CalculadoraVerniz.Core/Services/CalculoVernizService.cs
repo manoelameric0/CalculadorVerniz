@@ -14,7 +14,7 @@ public class CalculoVernizService
 
     public async Task AdicionarMedida(decimal largura, decimal altura)
     {
-        await _calc.Adicionar(largura, altura);
+        await _calc.Adicionar(new Medida(largura, altura));
     }
 
     public async Task<ResultadoCalculo> CalcularTotais()
