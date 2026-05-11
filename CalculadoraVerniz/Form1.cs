@@ -102,7 +102,7 @@ namespace CalculadoraVerniz
 
             if (index >= 0)
             {
-                await service.Remove(index);
+                await service.Remover(index);
                 AtualizarLista();
             }
         }

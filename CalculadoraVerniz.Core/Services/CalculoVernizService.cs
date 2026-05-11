@@ -14,7 +14,7 @@ public class CalculoVernizService
 
     public async Task AdicionarMedida(decimal largura, decimal altura)
     {
-        await _calc.Add(largura, altura);
+        await _calc.Adicionar(largura, altura);
     }
 
     public async Task<ResultadoCalculo> CalcularTotais()
@@ -24,7 +24,7 @@ public class CalculoVernizService
         decimal verniz = mlTotal * 5/6;
         decimal catalizador = mlTotal * 1/6;
 
-        await _calc.Clear();
+        await _calc.Limpar();
 
         return new ResultadoCalculo(areaTotal, mlTotal, verniz, catalizador);
 
@@ -32,7 +32,7 @@ public class CalculoVernizService
 
     public async Task<bool> TemMedidas() => await _calc.TemMedidas();
 
-    public async Task Remove(int index) => await _calc.Remove(index);
+    public async Task Remover(int index) => await _calc.Remover(index);
 
     public async Task<IEnumerable<Medida>> Medidas() => await _calc.Medidas();
 }
