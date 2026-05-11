@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 
 // service
 builder.Services.AddScoped<CalculoVernizService>();
-builder.Services.AddScoped<Calculo>();
+//builder.Services.AddScoped<Calculo>();
 
 var app = builder.Build();
 
