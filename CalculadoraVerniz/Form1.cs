@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using CalculadoraVerniz.Models;
-using CalculadoraVerniz.Services;
+using CalculadoraVerniz.Core.Models;
+using CalculadoraVerniz.Core.Services;
 
 namespace CalculadoraVerniz
 {
@@ -20,14 +20,14 @@ namespace CalculadoraVerniz
         private Label lblResultado;
 
         private List<Medida> medidas = new List<Medida>();
-        private CalculoVernizService service = new CalculoVernizService();
+        private readonly CalculoVernizService service = new CalculoVernizService(new Calculo());
 
         public Form1()
         {
             InicializarComponentes();
         }
 
-        private void InicializarComponentes()
+        private async Task InicializarComponentes()
         {
             this.Text = "Calculadora de Verniz";
             this.Size = new Size(500, 500);
@@ -96,17 +96,17 @@ namespace CalculadoraVerniz
             this.Controls.Add(lblResultado);
         }
 
-        private void BtnRemover_Click(object sender, EventArgs e)
+        private async void BtnRemover_Click(object sender, EventArgs e)
         {
             int index = lstMedidas.SelectedIndex;
 
             if (index >= 0)
             {
-                medidas.RemoveAt(index);
+                await service.Remove(index);
                 AtualizarLista();
             }
         }
-        private void BtnAdicionar_Click(object sender, EventArgs e)
+        private async void BtnAdicionar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -124,8 +124,8 @@ namespace CalculadoraVerniz
                     return;
                 }
 
-                var medida = new Medida(largura, altura);
-                medidas.Add(medida);
+                //var medida = new Medida(largura, altura);
+                await service.AdicionarMedida(largura, altura);
 
                 AtualizarLista();
 
@@ -140,13 +140,13 @@ namespace CalculadoraVerniz
             }
         }
 
-        private void AtualizarLista()
+        private async void AtualizarLista()
         {
             lstMedidas.Items.Clear();
 
             decimal areaTotal = 0;
 
-            foreach (var m in medidas)
+            foreach (var m in await service.Medidas())
             {
                 lstMedidas.Items.Add($"L: {m.Largura}cm | A: {m.Altura}cm | Área: {m.Area} m²");
                 areaTotal += m.Area;
@@ -155,15 +155,15 @@ namespace CalculadoraVerniz
             lblAreaTotal.Text = $"Área Total: {areaTotal} m²";
         }
 
-        private void BtnCalcular_Click(object sender, EventArgs e)
+        private async void BtnCalcular_Click(object sender, EventArgs e)
         {
-            if (medidas.Count == 0)
+            if (!await service.TemMedidas())
             {
                 MessageBox.Show("Adicione pelo menos uma medida.");
                 return;
             }
 
-            var resultado = service.CalcularTotais(medidas);
+            var resultado = await service.CalcularTotais();
 
             // Limpa visual da lista (como você pediu)
             lstMedidas.Items.Clear();
