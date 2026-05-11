@@ -6,5 +6,10 @@
         public decimal MlTotal { get; set; }
         public decimal Verniz { get; set; }
         public decimal Catalizador { get; set; }
+
+        public CalculoResponseDto()
+        {
+            
+        }
     }
 }
