@@ -1,3 +1,6 @@
+using CalculadoraVerniz.Core.Services;
+using CalculadoraVerniz.Core.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSwaggerGen();
+
+// service
+builder.Services.AddScoped<CalculoVernizService>();
+builder.Services.AddScoped<Calculo>();
 
 var app = builder.Build();
 
