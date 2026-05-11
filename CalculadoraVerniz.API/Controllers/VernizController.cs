@@ -1,4 +1,5 @@
 ﻿using CalculadoraVerniz.API.DTOs;
+using CalculadoraVerniz.Core.Models;
 using CalculadoraVerniz.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -16,12 +17,26 @@ namespace CalculadoraVerniz.API.Controllers
             _calculadora = service;
         }
 
-        [HttpPost("medida")]
-        public async Task<IActionResult> Add(MedidaRequestDto medida)
+        [HttpPost("calcular")]
+        public IActionResult Calcular(CalculoRequestDto request)
         {
-            await _calculadora.AdicionarMedida(medida.Largura, medida.Altura);
+            if (!request.Medidas.Any())
+            {
+                return NoContent();
+            }
 
-            return Created("", medida);
+            var medidas = new List<Medida>();
+
+            foreach (var medida in request.Medidas)
+            {
+                medidas.Add(new Medida(medida.Largura, medida.Altura));
+            }
+
+            
+
+            var response = _calculadora.CalcularTotais(medidas);
+
+            return Ok(CalculoMapper.Mapper(response));
         }
     }
 }
