@@ -22,7 +22,7 @@ namespace CalculadoraVerniz.API.Controllers
         {
             if (!request.Medidas.Any())
             {
-                return NoContent();
+                return BadRequest();
             }
 
             var medidas = new List<Medida>();
