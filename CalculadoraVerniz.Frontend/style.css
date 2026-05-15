@@ -6,3 +6,12 @@
     background-color: #121212;
     color: white;
 }
+
+.app-container
+{
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
