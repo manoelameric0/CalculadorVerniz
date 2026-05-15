@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.2.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11806.211 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraVerniz", "CalculadoraVerniz\CalculadoraVerniz.csproj", "{9A6C4F52-1391-C69C-6BA6-C525417B6E53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraVerniz.API", "CalculadoraVerniz.API\CalculadoraVerniz.API.csproj", "{70D8C801-ACB2-4630-933B-C8D089D8833B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraVerniz.Core", "CalculadoraVerniz.Core\CalculadoraVerniz.Core.csproj", "{B2C7B372-1FA8-413C-A979-44F18E7EBEFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CalculadoraVerniz.Frontend", "CalculadoraVerniz.Frontend", "{2BB013B5-7041-411A-96D0-32A774BA9775}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+		script.js = script.js
+		style.css = style.css
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
