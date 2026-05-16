@@ -54,3 +54,19 @@ button
     font-weight: bold;
     cursor: pointer;
 }
+
+.result-card
+{
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.result-card h2
+{
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
