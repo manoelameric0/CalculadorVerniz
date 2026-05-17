@@ -11,9 +11,9 @@ const btnCalcular = document.getElementById("btnCalcular");
 const btnAdicionar = document.getElementById("btnAdicionar");
 btnAdicionar.addEventListener("click", function()
 {
-     console.log("clicou"),
-     console.log(inputLargura.value),
-     console.log(inputAltura.value)
+    //  console.log("clicou"),
+    //  console.log(inputLargura.value),
+    //  console.log(inputAltura.value)
     
      const largura = Number(inputLargura.value);
      const altura = Number(inputAltura.value);
@@ -28,7 +28,7 @@ btnAdicionar.addEventListener("click", function()
      }
 
      medidas.push(medida);
-     console.log(medidas);
+    //  console.log(medidas);
      renderizarMedidas();
      inputAltura.value = "";
      inputLargura.value = "";
@@ -52,8 +52,8 @@ btnCalcular.addEventListener("click", async function() {
         })
     });
 
-    console.log(response);
-    console.log(response.status);
+    // console.log(response);
+    // console.log(response.status);
 
     if (!response.ok) {
         alert("não funfou");
@@ -61,7 +61,7 @@ btnCalcular.addEventListener("click", async function() {
     }
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     resultTitle.textContent = "Resultado";
     resultContent.innerHTML = `
