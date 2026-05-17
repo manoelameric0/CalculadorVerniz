@@ -8,15 +8,25 @@ btnAdicionar.addEventListener("click", function()
      console.log("clicou"),
      console.log(inputLargura.value),
      console.log(inputAltura.value)
+    
+     const largura = Number(inputLargura.value);
+     const altura = Number(inputAltura.value);
+    if (largura <= 0 || altura <= 0){
+         alert("Informe valores válidos.");
+         return;
+    }
 
      const medida = {
-        largura: inputLargura.value,
-        altura: inputAltura.value
+        largura: largura,
+        altura: altura
      }
 
      medidas.push(medida);
      console.log(medidas);
      renderizarMedidas();
+     inputAltura.value = "";
+     inputLargura.value = "";
+     inputLargura.focus();
     
 });
 
