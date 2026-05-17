@@ -1,6 +1,8 @@
 using CalculadoraVerniz.Core.Services;
 using CalculadoraVerniz.Core.Models;
 using CalculadoraVerniz.API.Middlewares;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<CalculoVernizService>();
 //builder.Services.AddScoped<Calculo>();
 
+builder.Services.AddCors();
 var app = builder.Build();
+
+app.UseCors(policy =>
+{
+    policy
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod();
+});
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
