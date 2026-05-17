@@ -65,19 +65,49 @@ btnCalcular.addEventListener("click", async function() {
 
     resultTitle.textContent = "Resultado";
     resultContent.innerHTML = `
-        <p>Área Total: ${data.areaTotal} m²</p>
-        <p>ML total: ${data.mlTotal} ML</p>
-        <p>Verniz: ${data.verniz} ML</p>
-        <p>Catalizador: ${data.catalizador} ML</p>
+        <p>Área Total: ${(data.areaTotal).toFixed(3)}m²</p>
+        <p>ML total: ${(data.mlTotal).toFixed(3)} ML</p>
+        <p>Verniz: ${(data.verniz).toFixed(3)} ML</p>
+        <p>Catalizador: ${(data.catalizador).toFixed(3)} ML</p>
     `
+    medidas.length = 0;
 });
 
 function renderizarMedidas(){
     resultContent.innerHTML = "";
 
-    medidas.forEach(function (medida){
+    medidas.forEach(function (medida, index){
         resultContent.innerHTML += ` 
-        <p>${medida.largura} x ${medida.altura} </p>
+        <div class="medida-item" data-index="${index}">
+
+            <span>
+                ${(medida.largura).toFixed(3)} x ${(medida.altura.toFixed(3))}  ${(medida.largura * medida.altura / 10000).toFixed(3)}m² 
+            </span>
+
+            <button class="btn-remover" data-index="${index}">
+                X
+            </button>
+
+        </div>
         `;
+    });
+
+    const itensMedida = document.querySelectorAll(".medida-item");
+
+    itensMedida.forEach(function (item){
+        item.addEventListener("click", function(){
+            item.classList.toggle("ativo");
+        })
+    });
+
+    const botoesRemover = document.querySelectorAll(".btn-remover");
+
+    botoesRemover.forEach(function (botao){
+        botao.addEventListener("click", function(event){
+            event.stopPropagation();
+            const index = botao.dataset.index;
+            medidas.splice(index, 1);
+            renderizarMedidas();
+        });
     });
 }
