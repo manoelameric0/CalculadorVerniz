@@ -42,7 +42,7 @@ btnCalcular.addEventListener("click", async function() {
         return;
     }
 
-    const response = await fetch("http://localhost:5056/api/Verniz/calcular", {
+    const response = await fetch("http://192.168.3.39:5056/api/Verniz/calcular", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -110,4 +110,8 @@ function renderizarMedidas(){
             renderizarMedidas();
         });
     });
+}
+
+if ("serviceWorker" in navigator){
+    navigator.serviceWorker.register("service-worker.js");
 }
