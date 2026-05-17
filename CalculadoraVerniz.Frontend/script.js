@@ -1,5 +1,7 @@
 const medidas = [];
 
+const resultContent = document.getElementById("resultContent");
+
 const btnAdicionar = document.getElementById("btnAdicionar");
 btnAdicionar.addEventListener("click", function()
 {
@@ -14,8 +16,19 @@ btnAdicionar.addEventListener("click", function()
 
      medidas.push(medida);
      console.log(medidas);
+     renderizarMedidas();
     
 });
 
 const inputLargura = document.getElementById("inputLargura");
 const inputAltura = document.getElementById("inputAltura");
+
+function renderizarMedidas(){
+    resultContent.innerHTML = "";
+
+    medidas.forEach(function (medida){
+        resultContent.innerHTML += ` 
+        <p>${medida.largura} x ${medida.altura} </p>
+        `;
+    });
+}
