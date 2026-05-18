@@ -4,7 +4,7 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore
+RUN dotnet restore CalculadoraVerniz.API/CalculadoraVerniz.API.csproj
 
 RUN dotnet publish CalculadoraVerniz.API/CalculadoraVerniz.API.csproj -c Release -o /app/publish
 
