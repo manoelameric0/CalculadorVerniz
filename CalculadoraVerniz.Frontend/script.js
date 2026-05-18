@@ -1,3 +1,7 @@
+import { VernizService } from "./calculators/verniz-service.js";
+
+const service = new VernizService();
+
 const medidas = [];
 
 const resultContent = document.getElementById("resultContent");
@@ -15,11 +19,16 @@ btnAdicionar.addEventListener("click", function()
     //  console.log(inputLargura.value),
     //  console.log(inputAltura.value)
     
+
      const largura = Number(inputLargura.value);
      const altura = Number(inputAltura.value);
     if (largura <= 0 || altura <= 0){
          alert("Informe valores válidos.");
          return;
+    }
+
+    if (resultTitle.textContent !== "Adicionados") {
+        resultTitle.textContent = "Adicionados";
     }
 
      const medida = {
@@ -42,34 +51,36 @@ btnCalcular.addEventListener("click", async function() {
         return;
     }
 
-    const response = await fetch("https://calculadora-verniz-api.onrender.com/api/Verniz/calcular", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            medidas: medidas
-        })
-    });
+    // const response = await fetch("https://calculadora-verniz-api.onrender.com/api/Verniz/calcular", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //         medidas: medidas
+    //     })
+    // });
 
     // console.log(response);
     // console.log(response.status);
 
-    if (!response.ok) {
-        alert("não funfou");
-        return;
-    }
+    // if (!response.ok) {
+    //     alert("não funfou");
+    //     return;
+    // }
 
-    const data = await response.json();
+    // const data = await response.json();
     // console.log(data);
+
+    const data = service.CalcularTotais(medidas);
 
     resultTitle.textContent = "Resultado";
     resultContent.innerHTML = `
         <p>Área Total: ${
-            data.areaTotal >= 1000
-            ? `${+(data.areaTotal / 1000).toFixed(3)}L` :`${+(data.areaTotal).toFixed(3)}ML`
+            data.areaTotal >= 1
+            ? `${+(data.areaTotal /10000).toFixed(3)}m²`: `${+(data.areaTotal /1000).toFixed(3)}cm`
             
-        }m²</p>
+        }</p>
 
         <p>ML total: ${
             data.mlTotal >= 1000
@@ -97,7 +108,11 @@ function renderizarMedidas(){
         <div class="medida-item" data-index="${index}">
 
             <span>
-                ${+(medida.largura).toFixed(3)} x ${+(medida.altura.toFixed(3))}  ${+(medida.largura * medida.altura / 10000).toFixed(3)}m² 
+                ${+(medida.largura).toFixed(3)} x ${+(medida.altura.toFixed(3))}  ${
+                    medida.largura * medida.altura /10000 >= 1 ? `
+                    ${+(medida.largura * medida.altura / 10000).toFixed(3)}m²` : `${+(medida.largura * medida.altura / 10000).toFixed(3)}cm`
+                    
+                } 
             </span>
 
             <button class="btn-remover" data-index="${index}">
