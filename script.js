@@ -42,7 +42,7 @@ btnCalcular.addEventListener("click", async function() {
         return;
     }
 
-    const response = await fetch("http://192.168.3.39:5056/api/Verniz/calcular", {
+    const response = await fetch("http://192.168.0.58:5056/api/Verniz/calcular", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
