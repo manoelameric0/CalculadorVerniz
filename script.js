@@ -65,10 +65,26 @@ btnCalcular.addEventListener("click", async function() {
 
     resultTitle.textContent = "Resultado";
     resultContent.innerHTML = `
-        <p>Área Total: ${+(data.areaTotal).toFixed(3)}m²</p>
-        <p>ML total: ${+(data.mlTotal).toFixed(3)} ML</p>
-        <p>Verniz: ${+(data.verniz).toFixed(3)} ML</p>
-        <p>Catalizador: ${+(data.catalizador).toFixed(3)} ML</p>
+        <p>Área Total: ${
+            data.areaTotal >= 1000
+            ? `${+(data.areaTotal / 1000).toFixed(3)}L` :`${+(data.areaTotal).toFixed(3)}ML`
+            
+        }m²</p>
+
+        <p>ML total: ${
+            data.mlTotal >= 1000
+            ? `${+(data.mlTotal / 1000).toFixed(3)}L` : `${+(data.mlTotal).toFixed(3)}ML`
+        }</p>
+
+        <p>Verniz: ${
+            data.verniz >= 1000
+            ? `${+(data.verniz / 1000).toFixed(3)}L` : `${+(data.verniz).toFixed(3)}ML`
+        }</p>
+
+        <p>Catalizador: ${
+            data.catalizador >= 1000
+            ? `${+(data.catalizador / 1000).toFixed(3)}L` : `${+(data.catalizador).toFixed(3)}ML`
+        }</p>
     `
     medidas.length = 0;
 });
