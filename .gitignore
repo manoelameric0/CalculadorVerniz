@@ -1,9 +1,0 @@
-*.config
-/.vs
-/CalculadoraVerniz.API/bin
-*.lscache
-/CalculadoraVerniz.API/obj
-/CalculadoraVerniz.Core/bin
-/CalculadoraVerniz.Core/obj
-/CalculadoraVerniz/bin
-/CalculadoraVerniz/obj
