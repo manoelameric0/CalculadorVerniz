@@ -22,18 +22,18 @@ self.addEventListener("activate", function (event){
 
 self.addEventListener("fetch", function (event){
     event.respondWith(
-        caches.match(event.request).then(function (response){
+        caches.match(event.request, { ignoreSearch: true}).then(function (response){
             return response || fetch(event.request);
         })
     );
 });
 
-const CACHE_NAME = "verniz-cache-v5";
+const CACHE_NAME = "verniz-cache-v8";
 const urlsToCache = [
-    "/",
-    "/index.html",
-    "/style.css",
-    "/script.js",
-    "/manifest.json",
-    "/verniz-service.js"
+    "./",
+    "index.html",
+    "style.css",
+    "script.js",
+    "manifest.json",
+    "calculators/verniz-service.js"
 ];
