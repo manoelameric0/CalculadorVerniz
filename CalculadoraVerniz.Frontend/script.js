@@ -72,29 +72,29 @@ btnCalcular.addEventListener("click", async function() {
     // const data = await response.json();
     // console.log(data);
 
-    const data = service.CalcularTotais(medidas);
+    const data = await service.CalcularTotais(medidas);
 
     resultTitle.textContent = "Resultado";
     resultContent.innerHTML = `
         <p>Área Total: ${
             data.areaTotal >= 1
-            ? `${+(data.areaTotal /10000).toFixed(3)}m²`: `${+(data.areaTotal /1000).toFixed(3)}cm`
+            ? `${+(data.areaTotal).toFixed(1)}m²`: `${+(data.areaTotal * 100).toFixed(1)}cm`
             
         }</p>
 
         <p>ML total: ${
             data.mlTotal >= 1000
-            ? `${+(data.mlTotal / 1000).toFixed(3)}L` : `${+(data.mlTotal).toFixed(3)}ML`
+            ? `${+(data.mlTotal / 1000).toFixed(1)}L` : `${+(data.mlTotal).toFixed(1)}ML`
         }</p>
 
         <p>Verniz: ${
             data.verniz >= 1000
-            ? `${+(data.verniz / 1000).toFixed(3)}L` : `${+(data.verniz).toFixed(3)}ML`
+            ? `${+(data.verniz / 1000).toFixed(1)}L` : `${+(data.verniz).toFixed(1)}ML`
         }</p>
 
         <p>Catalizador: ${
             data.catalizador >= 1000
-            ? `${+(data.catalizador / 1000).toFixed(3)}L` : `${+(data.catalizador).toFixed(3)}ML`
+            ? `${+(data.catalizador / 1000).toFixed(1)}L` : `${+(data.catalizador).toFixed(1)}ML`
         }</p>
     `
     medidas.length = 0;
