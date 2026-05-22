@@ -32,7 +32,7 @@ const CACHE_NAME = "verniz-cache-v5";
 const urlsToCache = [
     "/",
     "/index.html",
-    "style.css",
+    "/style.css",
     "/script.js",
     "/manifest.json",
     "/verniz-service.js"
