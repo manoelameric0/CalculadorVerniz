@@ -57,7 +57,7 @@ btnCalcular.addEventListener("click", async function() {
     resultContent.innerHTML = `
         <p>Área Total: ${
             data.areaTotal >= 1
-            ? `${+(data.areaTotal).toFixed(1)}m²`: `${+(data.areaTotal * 100).toFixed(1)}cm`
+            ? `${+(data.areaTotal).toFixed(1)}m²` :`${+(data.areaTotal * 100).toFixed(1)}cm`
             
         }</p>
 
@@ -87,10 +87,18 @@ function renderizarMedidas(){
         <div class="medida-item" data-index="${index}">
 
             <span>
-                ${+(medida.largura).toFixed(3)} x ${+(medida.altura.toFixed(3))}  ${
-                    medida.largura * medida.altura /10000 >= 1 ? `
-                    ${+(medida.largura * medida.altura / 10000).toFixed(3)}m²` : `${+(medida.largura * medida.altura / 10000).toFixed(3)}cm`
-                    
+                
+               
+                
+            
+            
+            
+            ${+(medida.largura).toFixed(1)} x ${+(medida.altura.toFixed(1))}  ${
+                    medida.largura * medida.altura >= 10000 ? `
+                        ${+(medida.largura * medida.altura / 10000).toFixed(1)}m²
+                    ` : `
+                        ${+(medida.largura * medida.altura / 100).toFixed(1)}cm
+                    `
                 } 
             </span>
 
