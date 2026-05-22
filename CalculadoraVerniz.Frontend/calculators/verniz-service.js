@@ -9,14 +9,13 @@ export class ResultadoCalculo {
 
 export class VernizService {
   async CalcularTotais(medidas) {
-    let areaTotal = medidas.reduce((acc, m) => acc + (m.largura * m.altura), 0);
 
     if (!navigator.onLine) {
-      Calcular();
+      return Calcular();
     }
 
     try {
-      const controller = new AbortController();
+    const controller = new AbortController();
     const idDoTimer = setTimeout(function(){
       controller.abort();
     }, 8000);
@@ -32,6 +31,8 @@ export class VernizService {
         signal: controller.signal
     });
 
+    clearTimeout(idDoTimer);
+
     // console.log(response);
     // console.log(response.status);
 
@@ -39,14 +40,18 @@ export class VernizService {
     //     alert("não funfou");
     //     return;
     // }
-
-    const data = await response.json();
     console.log("Calculo-API");
+    //console.log(response.json());
+    return await response.json();
+    
     } catch (error) {
-      Calcular();
+      return Calcular();
     }
 
     function Calcular(){
+      let areaTotal = medidas.reduce((acc, m) => acc + (m.largura * m.altura), 0);
+      areaTotal = areaTotal / 10000;
+
       let mlTotal = areaTotal * 80;
       let verniz = mlTotal * 5 / 6;
       let catalizador = mlTotal * 1 / 6;
