@@ -51,27 +51,6 @@ btnCalcular.addEventListener("click", async function() {
         return;
     }
 
-    // const response = await fetch("https://calculadora-verniz-api.onrender.com/api/Verniz/calcular", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //         medidas: medidas
-    //     })
-    // });
-
-    // console.log(response);
-    // console.log(response.status);
-
-    // if (!response.ok) {
-    //     alert("não funfou");
-    //     return;
-    // }
-
-    // const data = await response.json();
-    // console.log(data);
-
     const data = await service.CalcularTotais(medidas);
 
     resultTitle.textContent = "Resultado";
