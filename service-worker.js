@@ -28,11 +28,12 @@ self.addEventListener("fetch", function (event){
     );
 });
 
-const CACHE_NAME = "verniz-cache-v1";
+const CACHE_NAME = "verniz-cache-v5";
 const urlsToCache = [
     "/",
     "/index.html",
-    "style.css",
+    "/style.css",
     "/script.js",
-    "/manifest.json"
+    "/manifest.json",
+    "/verniz-service.js"
 ];
