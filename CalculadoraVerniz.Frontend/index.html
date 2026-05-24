@@ -16,6 +16,41 @@
             <h1>Calculadora Verniz</h1>
         </div>
 
+        <button id="btnConfig">Configurações</button>
+
+        <div id="janelaConfig" class="modal-config" style="display: none;"> 
+            <div class="conteudo-config">
+                <h3>Configurações de Consumo</h3>
+
+                <div class="campo-grupo">
+                    <label>Consumo por m² (ml):</label>
+                    <input type="number" id="inputConsumo">
+                </div>
+
+                <div class="campo-grupo">
+                    <label>Proporção Verniz:</label>
+                    <div class="proporcao-container">
+                        <input type="number" id="vernizParte" min="1">
+                        <span>pra</span>
+                        <input type="number" id="vernizTotal" min="1">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label>Proporção Catalisador</label>
+                    <div class="proporcao-container">
+                        <input type="number" id="catalisadorParte" min="1">
+                        <span>pra</span>
+                        <input type="number" id="catalisadorTotal" min="1">
+                    </div>
+                </div>
+
+                <div class="botoes-config">
+                    <button id="btnFecharConfig">Fechar</button>
+                </div>
+            </div>
+        </div>
+
         <div class="input-group">
             <input id="inputLargura" type="number" placeholder="Largura (cm)">
 
