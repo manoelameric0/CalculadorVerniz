@@ -116,3 +116,26 @@ button
 {
     display: block;
 }
+
+.campo-grupo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.proporcao-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.proporcao-container input{
+    width: 70px;
+    text-align: center;
+}
+
+.proporcao-container span{
+    font-weight: bold;
+    color: #2a2a2a;
+    font-size: 14px;
+}
