@@ -7,16 +7,22 @@ export class ResultadoCalculo {
   }
 }
 
+export const Config = {
+    consumoM2 : 80,
+    proporcaoVerniz : 5/6,
+    proporcaoCatalisador : 1/6
+    
+}
+
 export class VernizService {
   async CalcularTotais(medidas) {
-
     if (!navigator.onLine) {
       return Calcular();
     }
 
     try {
     const controller = new AbortController();
-    const idDoTimer = setTimeout(function(){
+    const idDoTimer = setTimeout(() => {
       controller.abort();
     }, 8000);
 
@@ -52,9 +58,17 @@ export class VernizService {
       let areaTotal = medidas.reduce((acc, m) => acc + (m.largura * m.altura), 0);
       areaTotal = areaTotal / 10000;
 
-      let mlTotal = areaTotal * 80;
-      let verniz = mlTotal * 5 / 6;
-      let catalizador = mlTotal * 1 / 6;
+      // testando novas config
+      // const novosValores = {
+      //   consumoM2: 80,
+      //   proporcaoVerniz: 4/5,
+      //   proporcaoCatalisador: 1/5
+      // }
+      // atualizarConfig(novosValores);
+
+      let mlTotal = areaTotal * Config.consumoM2;
+      let verniz = mlTotal * Config.proporcaoVerniz;
+      let catalizador = mlTotal * Config.proporcaoCatalisador;
 
       medidas.length = 0;
 
@@ -63,4 +77,13 @@ export class VernizService {
     }
     
   }
+
+  async atualizarConfig(novosValores){
+    Config.consumoM2 = novosValores.consumoM2;
+    Config.proporcaoVerniz = novosValores.proporcaoVerniz;
+    Config.proporcaoCatalisador = novosValores.proporcaoCatalisador;
+    console.log("Novas configurações aplicadas com sucesso:", Config);
+  }
+
 }
+
