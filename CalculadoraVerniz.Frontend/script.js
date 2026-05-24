@@ -1,7 +1,7 @@
 import { VernizService } from "./calculators/verniz-service.js";
+import { Config } from "./calculators/verniz-service.js";
 
 const service = new VernizService();
-
 const medidas = [];
 
 const resultContent = document.getElementById("resultContent");
@@ -11,8 +11,38 @@ const resultTitle = document.getElementById("resultTitle");
 const inputLargura = document.getElementById("inputLargura");
 const inputAltura = document.getElementById("inputAltura");
 
+const btnConfig = document.getElementById("btnConfig");
+const btnFecharConfig = document.getElementById("btnFecharConfig");
+const janelaConfig = document.getElementById("janelaConfig");
+
+const inputConsumo = document.getElementById("inputConsumo");
+const vernizParte = document.getElementById("vernizParte");
+const vernizTotal = document.getElementById("vernizTotal");
+const catalisadorParte = document.getElementById("catalisadorParte");
+const catalisadorTotal = document.getElementById("catalisadorTotal");
+
 const btnCalcular = document.getElementById("btnCalcular");
 const btnAdicionar = document.getElementById("btnAdicionar");
+
+btnConfig.addEventListener("click", function() {
+  // Preenche o consumo padrão (80)
+  inputConsumo.value = Config.consumoM2;
+  
+  // Define visualmente os números da proporção padrão (5 pra 6 e 1 pra 6)
+  vernizParte.value = 5;
+  vernizTotal.value = 6;
+  
+  catalisadorParte.value = 1;
+  catalisadorTotal.value = 6;
+
+  // Abre a janela
+  janelaConfig.style.display = "flex";
+});
+
+btnFecharConfig.addEventListener("click", function() {
+  janelaConfig.style.display = "none";
+});
+
 btnAdicionar.addEventListener("click", function()
 {
     //  console.log("clicou"),
